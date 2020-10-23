@@ -9,7 +9,8 @@ class Emplacement extends Model
 {
     use HasFactory;
 
-    public function choses(){
+    public function choses()
+    {
         return $this->hasMany('App\Models\Chose');
     }
 }
