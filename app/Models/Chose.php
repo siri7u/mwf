@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Chose extends Model
 {
     use HasFactory;
+
+    public function emplacement()
+    {
+        return $this->hasOne('App\Models\Emplacement', 'id', 'emplacement_id');
+    }
 }

@@ -32,7 +32,6 @@ class EmplacementController extends Controller
 
     public function show($id)
     {
-        // TODO : savoir à tous les ojets qui appartiennent à l'emplacement
         $show = \App\Models\Emplacement::findOrFail($id);
         return view('emplacements.show',compact('show'));
     }

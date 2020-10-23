@@ -7,77 +7,47 @@ use Illuminate\Http\Request;
 
 class ChoseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        //
+        $emplacements = \App\Models\Emplacement::with('choses')->get();
+        return view('choses.index', compact('emplacements'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $emplacements = \App\Models\Emplacement::All();
+        return view('choses.create', compact('emplacements'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name'=> 'required',
+            'description'=> 'required',
+        ]);
+        $chose = new \App\Models\Chose();
+        $chose->name = $request->name;
+        $chose->description = $request->description;
+        $chose->emplacement_id = intval($request->emplacement_id);
+        $chose->save();
+        return redirect('/chose');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Chose  $chose
-     * @return \Illuminate\Http\Response
-     */
     public function show(Chose $chose)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Chose  $chose
-     * @return \Illuminate\Http\Response
-     */
     public function edit(Chose $chose)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Chose  $chose
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, Chose $chose)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Chose  $chose
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Chose $chose)
     {
         //

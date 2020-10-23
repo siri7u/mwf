@@ -15,10 +15,12 @@ class CreateChosesTable extends Migration
     {
         Schema::create('choses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('emplacement_id');
+            $table->foreignId('emplacement_id')->index();
             $table->string('name', 100);
             $table->mediumText('description');
             $table->timestamps();
+
+            $table->foreign('emplacement_id')->references('id')->on('emplacements');
         });
     }
 

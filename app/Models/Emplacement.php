@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Emplacement extends Model
 {
     use HasFactory;
+
+    public function choses(){
+        return $this->hasMany('App\Models\Chose');
+    }
 }
