@@ -32,7 +32,7 @@ class EmplacementController extends Controller
 
     public function show($id)
     {
-        $show = \App\Models\Emplacement::findOrFail($id);
+        $show = \App\Models\Emplacement::with('choses')->get()->find($id);
         return view('emplacements.show',compact('show'));
     }
 

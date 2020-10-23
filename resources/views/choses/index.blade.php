@@ -26,7 +26,6 @@
                             <th></th>
                         </tr>
                         </thead>
-
                         @foreach($emplacement->choses as $chose)
                             <tr class="table-row" data-href="/choses/{{ $chose->id }}">
                                 <td>{{ $chose->name }}</td>
@@ -42,7 +41,8 @@
                                 </td>
                             </tr>
                         @endforeach
-                    </table>                </div>
+                    </table>
+                </div>
             </div>
         @endforeach
     </div>

@@ -3,7 +3,7 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <form method="post" action="/emplacements/{{ $edit->id }}">
+                <form method="post" action="/choses/{{ $edit->id }}">
                     @method('PUT')
                     @csrf
                     <div class="form-group">

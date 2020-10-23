@@ -30,26 +30,34 @@ class ChoseController extends Controller
         $chose->description = $request->description;
         $chose->emplacement_id = intval($request->emplacement_id);
         $chose->save();
-        return redirect('/chose');
+        return redirect('/choses');
     }
 
-    public function show(Chose $chose)
+    public function show($id)
     {
-        //
+        $show = \App\Models\Chose::findOrFail($id);
+        return view('choses.show',compact('show'));
     }
 
-    public function edit(Chose $chose)
+    public function edit($id)
     {
-        //
+        $edit = \App\Models\Chose::find($id);
+        return view('choses.edit', compact('edit'));
     }
 
-    public function update(Request $request, Chose $chose)
+    public function update(Request $request, $id)
     {
-        //
+        $update = \App\Models\Chose::find($id);
+        $update->name = $request->name;
+        $update->description = $request->description;
+        $update->emplacement_id = intval($request->emplacement_id);
+        $update->save();
+        return redirect('/choses/'.$id);
     }
 
-    public function destroy(Chose $chose)
+    public function destroy($id)
     {
-        //
+        $destroy = \App\Models\Chose::find($id)->forceDelete();
+        return redirect('/choses');
     }
 }
