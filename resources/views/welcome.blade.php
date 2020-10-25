@@ -5,7 +5,7 @@
     <div class="container">
         <div class="card">
             <div class="card-body">
-                <p> Welcome     </p>
+                <p>Welcome to my website</p>
             </div>
         </div>
     </div>
